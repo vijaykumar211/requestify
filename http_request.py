@@ -13,7 +13,10 @@ class HTTPRequest(BaseHTTPRequestHandler):
         try:
             self.data = raw_http_request[raw_http_request.index("\n\n")+2:].rstrip()
         except ValueError:
-            self.data = None
+            try:
+            	self.data = raw_http_request[raw_http_request.index("\r\n\r\n")+4:].rstrip()
+            except ValueError:
+           	self.data = None
 
         # Cookies
         self.cookies = {}
