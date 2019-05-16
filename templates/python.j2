@@ -8,6 +8,8 @@ headers = {
 {%- endfor %}
 }
 
+del headers['content-length']
+
 # Data
 data = r"""{{ data or '' }}"""
 
