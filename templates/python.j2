@@ -8,7 +8,10 @@ headers = {
 {%- endfor %}
 }
 
-del headers['content-length']
+try:
+        del headers['content-length']
+except:
+        rr = 0
 
 # Data
 data = r"""{{ data or '' }}"""
